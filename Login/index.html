@@ -3,20 +3,25 @@
 <head>
 	<title>Request to a php file</title>
 	<script type="text/javascript">
-	function test(){
+
+	function login(){
 		var xmlhttp;
 		if(window.XMLHttpRequest){
 			xmlhttp = new XMLHttpRequest();
 		} else {
 			xmlhttp = ActiveXObject("Microsoft.XMLHTTP");
 		}
+
+		var uname = document.getElementById('username').value;
+		var upassword = document.getElementById('userpassword').value;
+
 		xmlhttp.onreadystatechange = function(){
-			if(xmlhttp.readystate == 4){
+			if(xmlhttp.readyState == 4){
 				document.getElementById('result').innerHTML = xmlhttp.responseText;
 			}
+		};
 
-		}
-		url = '';
+		url = 'login.php?name=' + uname + '&password=' + upassword;
 		xmlhttp.open('GET', url, true);
 		xmlhttp.send();
 	}
@@ -29,11 +34,11 @@
 		<td>Name: </td><td><input type="text" name="name" id="username"></td>
 	</tr>
 	<tr>
-		<td>Password: </td><td><input type="password" name="password" id="userpass"></td>
+		<td>Password: </td><td><input type="password" name="password" id="userpassword"></td>
 	</tr>
 </table>
 
-<p><input type="button" value="Login" onclick="test()" /></p>
+<p><input type="button" value="Login" onclick="login()" /></p>
 
 <div id="result">Result</div>
 </body>
