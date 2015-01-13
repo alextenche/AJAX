@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			function test(){
+				var xmlhttp;
+				
+				if(window.XMLHttpRequest){
+					xmlhttp = new XMLHttpRequest();
+				} else {
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.onreadystatechange = function(){
+					if(xmlhttp.readyState == 4){
+						document.getElementById('result').innerHTML = xmlhttp.responseText;
+					}
+				}
+				xmlhttp.open("GET", "text.txt", true);
+				xmlhttp.send();
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="Click it!" onclick="test()" /><br />
+		<div id="result">Result...</div>
+	</body>
+</html>
