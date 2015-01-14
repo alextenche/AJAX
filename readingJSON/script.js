@@ -5,5 +5,4 @@ $.getJSON('data.json', function(data){
 		});
 	output += '</ul>';
 	$('#update').append(output);
-
 });
